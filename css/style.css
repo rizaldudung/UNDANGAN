@@ -13,7 +13,6 @@ body:not(.locked) .bottom-nav{display:block}
 .bottom-nav a{color:var(--pearl);text-decoration:none;font-size:.8rem;opacity:.8}
 .bottom-nav a:hover,.bottom-nav a:focus-visible{color:var(--gold);opacity:1}
 
-/* Cover */
 #cover{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;color:var(--pearl)}
 #cover.gone{display:none}
 .door{position:absolute;top:0;bottom:0;width:50%;z-index:0;background:var(--ink-2);
@@ -23,7 +22,6 @@ body:not(.locked) .bottom-nav{display:block}
 #cover.open .door-l{transform:translateX(-101%)}
 #cover.open .door-r{transform:translateX(101%)}
 
-/* Hiasan: pojok memakai gambar asli (tidak melar), sisi tengah hanya garis tipis yang ditarik */
 .cover-border{position:absolute;inset:0;z-index:1;pointer-events:none;box-sizing:border-box;
   --u:min(clamp(.36px,calc(.05vw + .2px),1px),.1vh);
   --bt:calc(340 * var(--u)); --br:calc(380 * var(--u)); --bb:calc(470 * var(--u)); --bl:calc(370 * var(--u));
@@ -46,7 +44,6 @@ body:not(.locked) .bottom-nav{display:block}
 .ornament-divider i{font-style:normal;font-size:1rem}
 .button-arrow{margin-left:.4rem}
 
-/* Buttons */
 .btn-gold{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--ink);border:0;border-radius:0;
   padding:.7rem 2rem;background:linear-gradient(180deg,#e3c98f,#b8944f);box-shadow:0 0 0 3px rgba(201,169,106,.2)}
 .btn-gold:hover{background:linear-gradient(180deg,#ecd5a0,#c4a05a);color:var(--ink)}
@@ -54,7 +51,6 @@ body:not(.locked) .bottom-nav{display:block}
 .btn-outline-gold:hover{background:var(--gold);color:var(--ink)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-/* Sections */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
   background:radial-gradient(ellipse at 50% 0%,var(--ink-2),var(--ink) 70%);color:var(--pearl);padding:2rem}
 .date-line{font-size:1.1rem;margin:1rem 0 2rem}
@@ -75,13 +71,11 @@ body:not(.locked) .bottom-nav{display:block}
 .event-card.light{border-color:var(--ink);padding:1.5rem 2.5rem}
 .rek{font-size:2rem;letter-spacing:.08em}
 
-/* Galeri */
 .photo{aspect-ratio:1;border:0;width:100%;cursor:pointer;transition:filter .3s;padding:0;overflow:hidden}
 .photo img{width:100%;height:100%;object-fit:cover}
 .photo:hover{filter:brightness(1.1)}
 .photo-lg{aspect-ratio:4/5;width:100%}
 
-/* Ucapan */
 .form-control,.form-select{border-radius:0;background:#fff}
 .wish{border-left:2px solid var(--gold);padding:.4rem 1rem;margin-bottom:1rem}
 .wish b{color:var(--gold);font-family:var(--serif);font-size:1.2rem;font-weight:600}

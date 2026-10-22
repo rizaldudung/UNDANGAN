@@ -1,18 +1,18 @@
-// ====== Pengaturan (ubah sesuai kebutuhan) ======
+
 const WEDDING_DATE = new Date('2027-01-17T08:00:00+07:00');
-const STORAGE_KEY = 'wishes-raka-sinta';
+const STORAGE_KEY = 'wishes-rizal-naisya';
 const PHOTO_COLORS = [
   ['#d9a5a0', '#c9a96a'], ['#1a2a4d', '#d9a5a0'], ['#c9a96a', '#eef0f4'],
   ['#101b33', '#c9a96a'], ['#eef0f4', '#d9a5a0'], ['#1a2a4d', '#c9a96a']
-]; // ganti dengan foto: <img src="img/foto1.jpg">
+]; 
 
 const $ = (id) => document.getElementById(id);
 
-// 1. Nama tamu dari URL, contoh: index.html?to=Budi+Santoso
+
 const guest = new URLSearchParams(location.search).get('to');
 if (guest) $('guestName').textContent = guest;
 
-// 2. Buka undangan + putar musik
+
 const bgm = $('bgm');
 const musicBtn = $('musicBtn');
 
@@ -26,7 +26,7 @@ $('openBtn').addEventListener('click', () => {
   bgm.play().then(() => musicBtn.classList.add('playing')).catch(() => {});
 });
 
-// Tombol putar/jeda
+
 musicBtn.addEventListener('click', () => {
   if (bgm.paused) {
     bgm.play();
@@ -37,7 +37,7 @@ musicBtn.addEventListener('click', () => {
   }
 });
 
-// 3. Hitung mundur
+
 function tick() {
   const diff = Math.max(0, WEDDING_DATE - new Date());
   const s = Math.floor(diff / 1000);
@@ -49,7 +49,7 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
-// 4. Galeri + modal Bootstrap
+
 const PHOTOS = [
   'img/foto1.jpg',
   'img/foto2.jpg',
@@ -78,7 +78,7 @@ PHOTOS.forEach((src, i) => {
   $('galleryGrid').appendChild(col);
 });
 
-// 5. RSVP & ucapan (disimpan di localStorage)
+
 const loadWishes = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 function renderWishes() {
   const box = $('wishes');
@@ -109,18 +109,18 @@ $('rsvpForm').addEventListener('submit', (e) => {
 });
 renderWishes();
 
-// 6. Salin nomor rekening
+
 $('copyBtn').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText($('rekNo').textContent); $('copyBtn').textContent = 'Tersalin'; }
   catch { $('copyBtn').textContent = 'Salin manual'; }
   setTimeout(() => ($('copyBtn').textContent = 'Salin nomor'), 2000);
 });
 
-// 7. Simpan ke kalender (file .ics)
+
 $('calBtn').addEventListener('click', (e) => {
   e.preventDefault();
   const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
-    'SUMMARY:Pernikahan Raka & Sinta', 'DTSTART:20270117T010000Z', 'DTEND:20270117T070000Z',
+    'SUMMARY:Pernikahan Rizal & Naisya', 'DTSTART:20270117T010000Z', 'DTEND:20270117T070000Z',
     'LOCATION:Sidoarjo', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));

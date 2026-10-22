@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Undangan Pernikahan Rizal & Naisya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="locked">
+
+<audio id="bgm" src="audio/kasih-putih.mp3" loop preload="auto"></audio>
+<button id="musicBtn" class="music-btn" aria-label="Putar atau jeda musik" hidden>♪</button>
+
+<!-- COVER: dua pintu yang terbuka -->
+<div id="cover" aria-label="Sampul undangan">
+  <div class="door door-l"></div>
+  <div class="door door-r"></div>
+  <div class="cover-border" aria-hidden="true"></div>
+  <div class="cover-content text-center">
+    <div class="ornament-divider" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+    <p class="small-note">Undangan Pernikahan</p>
+    <h1 class="names">Rizal <span>&amp;</span> Naisya</h1>
+    <div class="ornament-divider" aria-hidden="true"><span></span><i>✧</i><span></span></div>
+    <p class="recipient">Kepada Yth.</p>
+    <p class="guest" id="guestName">Tamu Undangan</p>
+    <button id="openBtn" class="btn btn-gold mt-4">Buka Undangan <span class="button-arrow">→</span></button>
+    <div class="ornament-divider" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+  </div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero text-center">
+    <p class="small-note">Kami akan menikah</p>
+    <h2 class="names big">Rizal <span>&</span> Naisya</h2>
+    <p class="date-line">Minggu, 17 Januari 2027</p>
+    <div class="row justify-content-center g-3 countdown" id="countdown">
+      <div class="col-3"><b id="cd-d">0</b><small>Hari</small></div>
+      <div class="col-3"><b id="cd-h">0</b><small>Jam</small></div>
+      <div class="col-3"><b id="cd-m">0</b><small>Menit</small></div>
+      <div class="col-3"><b id="cd-s">0</b><small>Detik</small></div>
+    </div>
+  </section>
+
+  <!-- MEMPELAI -->
+  <section id="couple" class="container section">
+    <p class="quote">“Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan untukmu agar kamu merasa tenteram kepadanya.”<br><small>QS. Ar-Rum: 21</small></p>
+    <div class="row g-5 mt-2 text-center">
+      <div class="col-md-6">
+        <div class="portrait"><img src="img/laki.png" alt="Foto Rizal"></div>
+        <h3>Rizal Caesar</h3>
+        <p>Putra dari Bapak Hendra &amp; Ibu Lestari<br>Sidoarjo</p>
+      </div>
+      <div class="col-md-6">
+        <div class="portrait"><img src="img/perempuan.png" alt="Foto Naisya"></div>
+        <h3>Naisya Putri</h3>
+        <p>Putri dari Bapak Andi &amp; Ibu Maya<br>Surabaya</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACARA -->
+  <section id="event" class="section dark">
+    <div class="container">
+      <h2 class="title">Waktu &amp; Tempat</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+          <div class="event-card">
+            <h3>Akad Nikah</h3>
+            <p>Minggu, 17 Januari 2027<br>08.00 – 10.00 WIB</p>
+            <p>Masjid Al-Falah<br>Jl. Raya Sidoarjo No. 12</p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="event-card">
+            <h3>Resepsi</h3>
+            <p>Minggu, 17 Januari 2027<br>11.00 – 14.00 WIB</p>
+            <p>Gedung Graha Bahagia<br>Jl. Pahlawan No. 45</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a class="btn btn-outline-gold" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Sidoarjo">Lihat Lokasi di Peta</a>
+        <a class="btn btn-outline-gold" id="calBtn" href="#">Simpan ke Kalender</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section id="gallery" class="container section">
+    <h2 class="title">Galeri</h2>
+    <div class="row g-2" id="galleryGrid"></div>
+  </section>
+
+  <!-- RSVP & UCAPAN -->
+  <section id="rsvp" class="section dark">
+    <div class="container" style="max-width:640px">
+      <h2 class="title">Konfirmasi &amp; Ucapan</h2>
+      <form id="rsvpForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="fName" class="form-label">Nama</label>
+          <input id="fName" class="form-control" required maxlength="40">
+          <div class="invalid-feedback">Tulis nama kamu.</div>
+        </div>
+        <div class="mb-3">
+          <label for="fStatus" class="form-label">Kehadiran</label>
+          <select id="fStatus" class="form-select" required>
+            <option value="">Pilih…</option>
+            <option>Hadir</option>
+            <option>Tidak hadir</option>
+            <option>Masih ragu</option>
+          </select>
+          <div class="invalid-feedback">Pilih salah satu.</div>
+        </div>
+        <div class="mb-3">
+          <label for="fMsg" class="form-label">Ucapan &amp; doa</label>
+          <textarea id="fMsg" class="form-control" rows="3" required maxlength="200"></textarea>
+          <div class="invalid-feedback">Tulis ucapan singkat.</div>
+        </div>
+        <button class="btn btn-gold w-100" type="submit">Kirim Ucapan</button>
+      </form>
+      <div id="wishes" class="mt-4"></div>
+    </div>
+  </section>
+
+  <!-- HADIAH -->
+  <section id="gift" class="container section text-center">
+    <h2 class="title">Tanda Kasih</h2>
+    <p>Doa restu Anda sudah menjadi hadiah terindah. Bila ingin memberi tanda kasih:</p>
+    <div class="event-card d-inline-block light">
+      <p class="mb-1">Bank MANDIRI Rizal Caesar</p>
+      <p class="rek" id="rekNo">1410026492181</p>
+      <button class="btn btn-outline-dark btn-sm" id="copyBtn">Salin nomor</button>
+    </div>
+  </section>
+
+  <footer class="text-center pb-5 mb-5">
+    <p class="names">Rizal <span>&</span> Naisya</p>
+    <small>Terima kasih atas doa dan kehadiran Anda.</small>
+  </footer>
+</main>
+
+<!-- Navbar bawah -->
+<nav class="navbar fixed-bottom bottom-nav">
+  <div class="container justify-content-around">
+    <a href="#home">Awal</a><a href="#couple">Mempelai</a><a href="#event">Acara</a>
+    <a href="#gallery">Galeri</a><a href="#rsvp">Ucapan</a>
+  </div>
+</nav>
+
+<!-- Modal galeri -->
+<div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"><div class="modal-content bg-transparent border-0">
+    <img id="modalPhoto" class="img-fluid mx-auto d-block" style="max-height:85vh" alt="Foto galeri">
+  </div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
